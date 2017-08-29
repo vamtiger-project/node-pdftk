@@ -291,7 +291,8 @@ class PdfTk {
                 return reject(data);
             });
 
-            child.stdout.on('data', data => result.push(Buffer.from(data)));
+            // For node < 4.5
+            child.stdout.on('data', data => result.push(new Buffer(data)));
 
             child.on('close', code => {
 
